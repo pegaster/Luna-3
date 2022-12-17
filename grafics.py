@@ -1,6 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from calc import *
+import os
+
+if not os.path.isdir("grafic_img"): # папка для хранения графиков
+    os.mkdir("grafic_img")
 
 velocitiyScalarArray = [lengthOfVector(velocityArray[i]) for i in range(period + 1)]
 # Данные по спискам из программы расчётов
