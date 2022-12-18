@@ -4,7 +4,7 @@ from prettytable import PrettyTable
 def toFixed(numObj, digits=0): # функция для получения фискированного колличества знаков после запятой
     return f"{numObj:.{digits}f}"
 
-period = 2 * 60
+period = 196
 
 # Константы внешней среды
 # Физические постоянные
@@ -37,8 +37,6 @@ massOfManeurTankEmpty = 0.56 * 1000 # масса бак2.7611а маневров
 
 stageEngineDuration = [120, 160, 36] # время работы двигателей кажой ступени
 stagePeriods = [120, 160, 196]
-
-e = 2.71828
 
 Cf = 0.5 # коэффициент лобового аэродинамического сопротивления
 S = 2.7611 # метры в квадрате, площадь конуса
@@ -106,7 +104,7 @@ def mass_of_rocket_in_moment(t): # масса топлива взависиом�
 def drag_force(Cf, velocityArray_in_time, S, ro): # сила сопротивления среды (воздуха) в Ньютонах
     return (Cf * ro * velocityArray_in_time ** 2 * S) / 2
 
-def Ro(P, M, R, T_temperatur):
+def Ro(P, M, R, T_temperatur): # плотность среды (воздуха)
     return (P * M) / (T_temperatur * R) 
 
 def pressure(P0, M, R, T, g, h): # атмосферное давление от высоты
@@ -176,6 +174,12 @@ accelerationArray = [
     )
 ]
 
+absoluteMassError = 500 # абсолютная погрешность массы в нулеврй момент времени, кг
+relativeMassError = absoluteMassError / massOfRocketArray[0] # относительная погрешность массы
+
+absoluteThrustError = 100 # абсолютная погрешность тяги, Н
+relativeThrustError = absoluteThrustError / forceOfThrustArray[0] # относительная погрешность массы
+
 table = PrettyTable()
 head = ['Время с момента запуска, с', 'Сила тяги двигателя, Н', 'Масса ракеты, кг', 'Сила гравитационного взаимодействия, Н', 'Атмосферное давление', 'Плотность среды', 'Сила лобового сопротивления, Н', 'Ускорение, м/с^2', 'Скорость, м/с', 'Высота над поверхностью Кербина, м']
 table.field_names = head
@@ -191,15 +195,15 @@ for t in range(period):
 
     row = [
         str(t), 
-        toFixed(forceOfThrustArray[t], 6), 
-        toFixed(massOfRocketArray[t], 6), 
-        toFixed(forceOfGravityArray[t], 6),
-        toFixed(pressureArray[t], 6),
-        toFixed(roArray[t], 6),
-        toFixed(dragForceArray[t], 6),
-        toFixed(lengthOfVector(accelerationArray[t]), 6),
-        toFixed(lengthOfVector(velocityArray[t]), 6),
-        toFixed(heightArray[t], 6)
+        toFixed(forceOfThrustArray[t], 6) + ' ± ' + toFixed(relativeThrustError * forceOfThrustArray[t], 6), 
+        toFixed(massOfRocketArray[t], 6) + ' ± ' + toFixed(relativeMassError * massOfRocketArray[t], 6), 
+        toFixed(forceOfGravityArray[t], 6) + ' ± ' + toFixed(relativeMassError * forceOfGravityArray[t], 6),
+        toFixed(pressureArray[t], 6) + ' ± ' + toFixed((relativeThrustError * forceOfThrustArray[t] + relativeMassError * forceOfGravityArray[t]) / (lengthOfVector(accelerationArray[t]) * massOfRocketArray[t]) * pressureArray[t], 6),
+        toFixed(roArray[t], 6) + ' ± ' + toFixed((relativeThrustError * forceOfThrustArray[t] + relativeMassError * forceOfGravityArray[t]) / (lengthOfVector(accelerationArray[t]) * massOfRocketArray[t]) * roArray[t], 6),
+        toFixed(dragForceArray[t], 6) + ' ± ' + toFixed((relativeThrustError * forceOfThrustArray[t] + relativeMassError * forceOfGravityArray[t]) / (lengthOfVector(accelerationArray[t]) * massOfRocketArray[t]) * 2 * dragForceArray[t], 6),
+        toFixed(lengthOfVector(accelerationArray[t]), 6) + ' ± ' + toFixed((relativeThrustError * forceOfThrustArray[t] + relativeMassError * forceOfGravityArray[t]) / massOfRocketArray[t], 6),
+        toFixed(lengthOfVector(velocityArray[t]), 6) + ' ± ' + toFixed((relativeThrustError * forceOfThrustArray[t] + relativeMassError * forceOfGravityArray[t]) / (lengthOfVector(accelerationArray[t]) * massOfRocketArray[t]) * lengthOfVector(velocityArray[t]), 6),
+        toFixed(heightArray[t], 6) + ' ± ' + toFixed((relativeThrustError * forceOfThrustArray[t] + relativeMassError * forceOfGravityArray[t]) / (lengthOfVector(accelerationArray[t]) * massOfRocketArray[t]) * heightArray[t], 6)
     ]
 
     table.add_row(row)
