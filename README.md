@@ -1,27 +1,30 @@
 # Миссия Луна-3
 
 ## Графики
+### График силы тяги двигателя от времени
+<img src="https://user-images.githubusercontent.com/57589882/208755087-9f714be5-1e7f-496c-a90c-6e0c9ce1c0e5.png" width=50% height=50%>  
+  
 ### График скорости от времени  
-<img src="https://user-images.githubusercontent.com/57589882/208233777-534159c3-fc44-45d5-a1b1-e9abdf72f9b5.jpeg" width=50% height=50%>  
+<img src="https://user-images.githubusercontent.com/57589882/208753513-82f65ca9-6332-49d9-a9b2-b8a895a6487b.png" width=50% height=50%>  
   
 ### График плотности воздуха от высоты  
-<img src="https://user-images.githubusercontent.com/57589882/208233779-4a511a68-0612-4f77-933e-02756c08f5bd.jpeg" width=50% height=50%>  
+<img src="https://user-images.githubusercontent.com/57589882/208753705-9bcef34c-7708-4e5f-b73c-24891c46fe99.png" width=50% height=50%>  
   
 ### График атмосферного давления от высоты  
-<img src="https://user-images.githubusercontent.com/57589882/208233781-460dd7c3-4df0-454e-8ce1-3bce96b5911a.jpeg" width=50% height=50%>  
+<img src="https://user-images.githubusercontent.com/57589882/208753873-f677c8de-bc38-458b-b97c-0f22bd59ba74.png" width=50% height=50%>  
   
 ### График массы от времени  
-<img src="https://user-images.githubusercontent.com/57589882/208233782-0e5cb49b-5316-4a4d-adfa-03d40fa58a6d.jpeg" width=50% height=50%>  
+<img src="https://user-images.githubusercontent.com/57589882/208753949-29bc64b2-dcea-46ae-ac82-091ea9a5cb1c.png" width=50% height=50%>  
   
 ### График высоты от времени  
-<img src="https://user-images.githubusercontent.com/57589882/208233783-46062c9a-ed8f-4339-b7d4-196714711564.jpeg" width=50% height=50%>  
+<img src="https://user-images.githubusercontent.com/57589882/208754216-e8d5fe5e-1896-40bc-a4d5-cd5c1f86d6c7.png" width=50% height=50%>  
   
 ### График силы тяготения от времени  
-<img src="https://user-images.githubusercontent.com/57589882/208233785-43c5f7e4-ceb8-45e2-9a9d-df3258145e97.jpeg" width=50% height=50%>  
+<img src="https://user-images.githubusercontent.com/57589882/208754604-a402a21a-1a7b-4de3-836e-feb7d87e96bd.png" width=50% height=50%>  
   
 ### График силы лобового сопротивления воздуха от набранной высоты  
-<img src="https://user-images.githubusercontent.com/57589882/208233787-7251073a-c767-45ef-b484-ccefa3bccf15.jpeg" width=50% height=50%>  
-
+<img src="https://user-images.githubusercontent.com/57589882/208754775-2137861b-c0de-4649-89af-785ae20a0b7c.png" width=50% height=50%>  
+  
 
 ## Технические особенности
 
