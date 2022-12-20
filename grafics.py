@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib.ticker 
 import numpy as np
 from calc import *
 import os
@@ -19,6 +20,7 @@ ro = np.array(roArray)
 dragForce = np.array(dragForceArray)
 position = np.array(positionArray)
 forceOfGravity = np.array(forceOfGravityArray)
+ForceOFThrust = np.array(forceOfThrustArray)
 
 # Построение графиков функции
 height_from_time = plt.figure("Высота", figsize=(10, 5), dpi=150) # номер фиуры
@@ -72,15 +74,15 @@ plt.xlabel('Время, с')
 plt.ylabel('Скорость, м/с')
 velocity_from_time.savefig("grafic_img/velocity.png")
 
-forceOfGravity_from_height = plt.figure("Сила тяготения", figsize=(8, 5), dpi=150)
+forceOfGravity_from_time = plt.figure("Сила тяготения", figsize=(8, 5), dpi=150)
 
-plt.plot(height, forceOfGravity, 'blue') # настройки отображения: цвет, линия
+plt.plot(time, forceOfGravity, 'blue') # настройки отображения: цвет, линия
 
 # названия осей
-plt.title("Сила тяготения от высоты")
-plt.xlabel('Высота, м')
+plt.title("Сила тяготения от времени")
+plt.xlabel('Время, с')
 plt.ylabel('Сила тяготения, Н')
-forceOfGravity_from_height.savefig("grafic_img/forceOfGravity_from_height")
+forceOfGravity_from_time.savefig("grafic_img/forceOfGravity_from_time")
 
 ro_from_height = plt.figure("Плотность", figsize=(10, 5), dpi=150)
 
@@ -91,5 +93,15 @@ plt.title("Плотность воздуха от высоты")
 plt.xlabel('Высота, м')
 plt.ylabel('Плотность, кг/м^3')
 ro_from_height.savefig("grafic_img/ro_from_height")
+
+force_of_thrust = plt.figure("Силя тяги", figsize=(10, 5), dpi=150)
+
+plt.plot(time, ForceOFThrust, 'olive') # настройки отображения: цвет, линия
+
+# названия осей
+plt.title("Сила тяги двигателя от времени")
+plt.xlabel('Время, с')
+plt.ylabel('Сила тяги двигателя, Н')
+force_of_thrust.savefig("grafic_img/force_of_thrust")
 
 plt.show()
